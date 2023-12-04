@@ -18,8 +18,8 @@ protein_max = 100
 meals = 3
 size = 10
 
-mutation_rate = 80 # per cent
-crossover_rate = 80 # per cent
+mutation_rate = 80 # percent
+crossover_rate = 80 # percent
 
 no_of_generations = 100
 
