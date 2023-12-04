@@ -1,7 +1,6 @@
 from dishes_list import DishesList
 from solution_list import SolutionList
 from restrictions import Limits
-import matplotlib.pyplot as plt
 
 # limits
 kcal_max = 2100
