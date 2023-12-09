@@ -66,7 +66,22 @@ class SolutionList(list):
         if self[ticket_1].carbs > self[ticket_2].carbs: return self[ticket_1]
         else: return self[ticket_2]
 
-    #def roulette_selection(self):
+    def roulette_selection(self):
+        roulette_list = []
+        total_carbs = self.calculate_carbs()
+        sum = 0
+        for solution in self:
+            value = int(1000*solution.carbs/total_carbs)
+            sum += value
+            roulette_list.append(sum)
+
+        ticket = random.randint(0, 998)
+        win = 0
+        for i, value in enumerate(roulette_list):
+            if ticket < value: 
+                win = i
+                break
+        return self[win]
 
     def rank_selection(self):
         number_of_ranking = 5
@@ -101,11 +116,11 @@ class SolutionList(list):
         new_generation = SolutionList(self.dishes_list, self.limits)
 
         # --- elitist strategy ---
-        #child = self.elitist_strategy()
-        #new_generation.append(child)
-        #print(f"1. {child}")
-        
-        #for i in range(self.limits.size-1): # if you use elitist strategy
+        child = self.elitist_strategy()
+        new_generation.append(child)
+        print(f"1. {child}")
+
+        # for i in range(1, self.limits.size): if you use elitist strategy
         for i in range(self.limits.size):
 
             # --- selection ---
